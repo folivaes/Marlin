@@ -56,7 +56,8 @@
 //
 #define X_STOP_PIN                          PG10
 #define Y_STOP_PIN                          PA12
-#define Z_STOP_PIN                          PG9
+//FOI TROCADO, ANTES PG9
+#define Z_STOP_PIN                          PF13
 
 //
 // Steppers
@@ -116,7 +117,7 @@
   #define FIL_RUNOUT_PIN                    PA15  // MT_DET
 #endif
 #ifndef FIL_RUNOUT2_PIN
-  #define FIL_RUNOUT2_PIN                   PF13
+  #define FIL_RUNOUT2_PIN                   PG9
 #endif
 
 // SPI Flash
