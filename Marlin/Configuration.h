@@ -41,7 +41,7 @@
 // #define D01_V8_220_TITAN_TMC_NO_ABL 1
 
 // XY2 Thanks to Emmanuel Hayez!
-// #define XY2_V6_255_NO_TITAN_TMC 1
+#define XY2_V6_255_NO_TITAN_TMC 1
 // #define XY2_V6_255_TITAN_TMC 1
 // #define XY2_V6_255_BMG_TMC 1
 // #define XY2_V6_255M_BMG_TMC 1
@@ -59,7 +59,7 @@
 
 // #define TFT_LVGL_UI
 // #define TFT_CLASSIC_UI
-// #define TFT_COLOR_UI
+#define TFT_COLOR_UI
 
 #if V6_330_TITAN_TMC
   #define MOTHERBOARD BOARD_CHITU3D_V6
@@ -211,6 +211,8 @@
   #define MOTHERBOARD BOARD_CHITU3D_V6
   #define WITH_TMC 1
   //#define WITH_TITAN 1
+  //#define WITHOUT_ABL 1 //Sem nivelamento automatico
+  #define BLTOUCH //Autonivelamento com 3dtouch
   #define XY2_MODELS 1
   #define X_BED_SIZE 255
   #define Y_BED_SIZE 255
@@ -1064,6 +1066,9 @@
   //#define ENDSTOPPULLDOWN_ZMIN
   //#define ENDSTOPPULLDOWN_ZMIN_PROBE
 #endif
+#ifdef BLTOUCH
+  #define ENDSTOPPULLUP_ZMIN_PROBE //Entrega 5v no sinal do bltouch e quando acionado recebe gnd
+#endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
@@ -1360,7 +1365,7 @@
 #ifdef WITHOUT_ABL
   #define PROBE_MANUALLY
 #else
-  #define FIX_MOUNTED_PROBE
+  //#define FIX_MOUNTED_PROBE //Desativado pois conflita com bltouch
 #endif
 
 /**
@@ -1896,7 +1901,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 5
+  #define GRID_MAX_POINTS_X 3 //Padrão 5 - Com 3 o autoleveling fica mais rápido
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column

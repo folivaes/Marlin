@@ -56,8 +56,8 @@
 //
 #define X_STOP_PIN                          PG10
 #define Y_STOP_PIN                          PA12
-//FOI TROCADO, ANTES PG9
-#define Z_STOP_PIN                          PF13
+#define Z_STOP_PIN                          PG9 //Usado fio original interrompendo no flat 30 vias(fio10)
+#define SERVO0_PIN                          PF13 //Originalmente usado no FIL_RUNOUT2_PIN
 
 //
 // Steppers
@@ -117,7 +117,7 @@
   #define FIL_RUNOUT_PIN                    PA15  // MT_DET
 #endif
 #ifndef FIL_RUNOUT2_PIN
-  #define FIL_RUNOUT2_PIN                   PG9
+  //#define FIL_RUNOUT2_PIN                   PF13
 #endif
 
 // SPI Flash
